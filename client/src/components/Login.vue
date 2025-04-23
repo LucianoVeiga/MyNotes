@@ -47,9 +47,6 @@ export default {
 			if (this.$refs.email.value && this.$refs.password.value) {
 				formData.append('email', this.$refs.email.value);
 				formData.append('password', this.$refs.password.value);
-				for (const pair of formData.entries()) {
-					console.log(pair[0], pair[1]);
-				}
 				fetch("/login", { method: 'POST', body: formData, credentials: 'include' })
 					.then(res => {
 						if (!res.ok) {

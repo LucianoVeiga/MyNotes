@@ -99,7 +99,7 @@ export default {
 			credentials: 'include'
 		})
 			.then(res => res.json())
-			.then(data => this.notes = data);
+			.then(data => this.notes = data.sort((a, b) => a.id - b.id));
 	},
 	methods: {
 		postNote() {

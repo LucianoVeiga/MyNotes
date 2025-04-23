@@ -11,5 +11,12 @@ module.exports = {
     migrations: {
       directory: "./db/migrations",
     }
+  },
+  production: {
+    client: "pg",
+    connection: process.env.DATABASE_URI,
+    migrations: {
+      directory: "./db/migrations",
+    }
   }
 };

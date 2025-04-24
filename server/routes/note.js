@@ -106,8 +106,8 @@ router.post(
             expiresIn: "1h",
           });
           res.cookie("token", userToken, {
-            httpOnly: false,
-            secure: true,
+            httpOnly: true,
+            secure: false,
             sameSite: "Lax",
             maxAge: 3600000,
           });
@@ -146,8 +146,8 @@ router.post(
           expiresIn: "1h",
         });
         res.cookie("token", userToken, {
-          httpOnly: false,
-          secure: true,
+          httpOnly: true,
+          secure: false,
           sameSite: "Lax",
           maxAge: 3600000,
         });

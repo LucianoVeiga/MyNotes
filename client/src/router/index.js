@@ -36,7 +36,7 @@ const router = createRouter({
 
 async function checkAuth() {
   try {
-    const res = await fetch("/checkAuth", {
+    const res = await fetch(process.env.VUE_APP_API_URL + "/checkAuth", {
       credentials: "include",
     });
 

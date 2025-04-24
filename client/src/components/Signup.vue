@@ -30,16 +30,14 @@
 </template>
 
 <script>
-
-const URL = "http://localhost:8000/";
-const SIGNUPURL = URL + "signup";
+const URL = process.env.VUE_APP_API_URL;
 
 export default {
 	data() {
 		return {
 			email: "",
 			password: "",
-			SIGNUPURL: SIGNUPURL
+			URL: URL
 		};
 	},
 	mounted() {
@@ -50,7 +48,7 @@ export default {
 			if (this.$refs.email.value && this.$refs.password.value) {
 				formData.append('email', this.$refs.email.value);
 				formData.append('password', this.$refs.password.value);
-				fetch("/signup", { method: 'POST', body: formData, credentials: 'include' })
+				fetch(URL + "/signup", { method: 'POST', body: formData, credentials: 'include' })
 					.then(res => {
 						if (!res.ok) {
 							throw new Error('Error at post: ' + res.status);

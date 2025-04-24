@@ -75,10 +75,7 @@
 
 <script>
 
-const URL = "http://localhost:8000/";
-const HOMEURL = URL + "notes";
-const LOGINURL = URL + "login";
-const LOGOUTURL = URL + "logout";
+const URL = process.env.VUE_APP_API_URL;
 
 export default {
 	data() {
@@ -88,13 +85,11 @@ export default {
 			noteBeingModified: -1,
 			title1: [],
 			content1: [],
-			HOMEURL: HOMEURL,
-			LOGINURL: LOGINURL,
-			LOGOUTURL: LOGOUTURL
+			URL: URL
 		};
 	},
 	mounted() {
-		fetch('/notes', {
+		fetch(URL + '/notes', {
 			method: 'GET',
 			credentials: 'include'
 		})
@@ -107,7 +102,7 @@ export default {
 			const formData = new FormData();
 			formData.append('title', this.$refs.title.value || "");
 			formData.append('content', this.$refs.content.value || "");
-			fetch('/notes', {
+			fetch(URL + '/notes', {
 				method: 'POST', body: formData,
 				credentials: 'include'
 			})
@@ -124,7 +119,7 @@ export default {
 			const formData = new FormData();
 			formData.append('title', title);
 			formData.append('content', content);
-			fetch('/' + id, {
+			fetch(URL + '/' + id, {
 				method: 'PUT', body: formData,
 				credentials: 'include'
 			})
@@ -144,7 +139,7 @@ export default {
 				.catch(err => console.log(err.message));
 		},
 		deleteNote(id) {
-			fetch('/' + id, {
+			fetch(URL + '/' + id, {
 				method: 'DELETE',
 				credentials: 'include'
 			})
@@ -152,7 +147,7 @@ export default {
 				.catch(err => console.log(err.message));
 		},
 		handleLogOut() {
-			fetch('/logout', {
+			fetch(URL + '/logout', {
 				method: 'POST',
 				credentials: 'include'
 			})

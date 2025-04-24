@@ -107,8 +107,8 @@ router.post(
           });
           res.cookie("token", userToken, {
             httpOnly: true,
-            secure: false,
-            sameSite: "Lax",
+            secure: true,
+            sameSite: "None",
             maxAge: 3600000,
           });
           res.status(201).json({ message: "Log in successfull" });
@@ -147,8 +147,8 @@ router.post(
         });
         res.cookie("token", userToken, {
           httpOnly: true,
-          secure: false,
-          sameSite: "Lax",
+          secure: true,
+          sameSite: "None",
           maxAge: 3600000,
         });
         res.status(201).json({ message: "Sign up successful" });

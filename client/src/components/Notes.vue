@@ -151,6 +151,12 @@ export default {
 				method: 'POST',
 				credentials: 'include'
 			})
+				.then(res => {
+					if (!res.ok) {
+						throw new Error('Error at logout: ' + res.status);
+					}
+					return res.json();
+				})
 				.then(() => {
 					this.$router.push("/login");
 				})

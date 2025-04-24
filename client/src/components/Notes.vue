@@ -152,7 +152,7 @@ export default {
 				credentials: 'include'
 			})
 				.then(() => {
-					this.$router.push("/login");
+					this.$router.push(URL + "/login");
 				})
 				.catch(err => console.log(err.message));
 		}

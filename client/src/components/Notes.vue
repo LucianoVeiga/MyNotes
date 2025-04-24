@@ -13,8 +13,8 @@
 		</div>
 	</div>
 	<div class="container">
-		<div v-if="loading">Logging out...</div>
 		<div class="container">
+			<div v-if="loading">Logging out...</div>
 			<div v-for="note in notes" :key="note.id">
 				<form id="put" v-if="note.id" class="note"
 					v-on:submit="(e) => { e.preventDefault(); patchNote(note.id, title1[note.id] ? title1[note.id] : note.title, content1[note.id] ? content1[note.id] : note.content); noteBeingModified = -1 }">

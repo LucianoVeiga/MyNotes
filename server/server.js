@@ -6,6 +6,7 @@ const app = express();
 const port = 8000;
 
 app.use(cors({
+	origin: 'https://mynotes.lucianoveiga.ar',
 	credentials: true,
   }));
 

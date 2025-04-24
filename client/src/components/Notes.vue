@@ -11,7 +11,7 @@
 				Log out
 			</button>
 		</div>
-		<div v-if="loading">Logging out...</div>
+		<div v-if="loading" style="color: #ffff">Logging out...</div>
 	</div>
 	<div class="container">
 		<div class="container">

@@ -13,6 +13,7 @@
 		</div>
 	</div>
 	<div class="container">
+		<div v-if="loading">Logging out...</div>
 		<div class="container">
 			<div v-for="note in notes" :key="note.id">
 				<form id="put" v-if="note.id" class="note"
@@ -85,7 +86,8 @@ export default {
 			noteBeingModified: -1,
 			title1: [],
 			content1: [],
-			URL: URL
+			URL: URL,
+			loading: false
 		};
 	},
 	mounted() {
@@ -147,6 +149,7 @@ export default {
 				.catch(err => console.log(err.message));
 		},
 		handleLogOut() {
+			this.loading = true;
 			fetch(URL + '/logout', {
 				method: 'POST',
 				credentials: 'include'
@@ -154,7 +157,10 @@ export default {
 				.then(() => {
 					this.$router.push("/login");
 				})
-				.catch(err => console.log(err.message));
+				.catch(err => console.log(err.message))
+				.finally(() => {
+					this.loading = false;
+				});
 		}
 	}
 };

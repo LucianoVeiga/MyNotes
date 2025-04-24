@@ -26,6 +26,7 @@
 		<a class="button" :href="'/login'">
 			Already have an account?
 		</a>
+		<div v-if="loading">Creating account...</div>
 	</div>
 </template>
 
@@ -37,13 +38,15 @@ export default {
 		return {
 			email: "",
 			password: "",
-			URL: URL
+			URL: URL,
+			loading: false
 		};
 	},
 	mounted() {
 	},
 	methods: {
 		handleSignup() {
+			this.loading = true;
 			const formData = new FormData();
 			if (this.$refs.email.value && this.$refs.password.value) {
 				formData.append('email', this.$refs.email.value);
@@ -58,7 +61,10 @@ export default {
 					.then(() => {
 						this.$router.push("/notes");
 					})
-					.catch(err => console.log(err.message));
+					.catch(err => console.log(err.message))
+					.finally(() => {
+						this.loading = false;
+					});
 			}
 			else {
 				console.log('error logging in')

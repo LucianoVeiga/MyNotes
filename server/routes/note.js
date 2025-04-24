@@ -106,7 +106,7 @@ router.post(
             expiresIn: "1h",
           });
           res.cookie("token", userToken, {
-            httpOnly: true,
+            httpOnly: false,
             secure: true,
             sameSite: "None",
             maxAge: 3600000,
@@ -146,7 +146,7 @@ router.post(
           expiresIn: "1h",
         });
         res.cookie("token", userToken, {
-          httpOnly: true,
+          httpOnly: false,
           secure: true,
           sameSite: "None",
           maxAge: 3600000,

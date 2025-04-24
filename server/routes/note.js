@@ -108,7 +108,7 @@ router.post(
           res.cookie("token", userToken, {
             httpOnly: true,
             secure: true,
-            sameSite: "None",
+            sameSite: "none",
             maxAge: 3600000,
           });
           res.status(201).json({ message: "Log in successfull" });
@@ -148,7 +148,7 @@ router.post(
         res.cookie("token", userToken, {
           httpOnly: true,
           secure: true,
-          sameSite: "None",
+          sameSite: "none",
           maxAge: 3600000,
         });
         res.status(201).json({ message: "Sign up successful" });
@@ -172,7 +172,11 @@ router.get("/checkAuth", (req, res) => {
 });
 
 router.post("/logout", (req, res) => {
-  res.clearCookie("token");
+  res.clearCookie("token", { 
+	httpOnly: true,
+	secure: true,
+	sameSite: 'none',
+  });
   res.json({ message: "Logged out" });
 });
 
